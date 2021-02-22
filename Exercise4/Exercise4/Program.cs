@@ -11,13 +11,35 @@ namespace Exercise4
 	{
 		static void Main(string[] args)
 		{
+			long unixTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+
 			//Open the file
-			using (StreamWriter writer = new StreamWriter("Test.txt"))
+			using (StreamWriter writer1 = new StreamWriter("UnixTime.txt"))
 			{
 				// Do writing here
-				writer.WriteLine("Hello World!");
+				writer1.WriteLine(unixTime);
+
+
 				//Close the file
-				writer.Close();
+				writer1.Close();
+			}   // Disposal happens here
+
+			//------------------------------------------------------------
+
+			Console.WriteLine(unixTime);
+
+
+			using (StreamReader reader = new StreamReader("UnixTime.txt"))
+			{
+				while (!reader.EndOfStream)
+				{
+					string lastLoggedTime = reader.ReadLine();
+					
+
+					
+
+				}
+				reader.Close();
 			}   // Disposal happens here
 
 			Console.ReadLine();
